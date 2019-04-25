@@ -1,0 +1,16 @@
+17:25:02.894 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+17:25:03.276 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - PooledDataSource forcefully closed/removed all connections.
+17:25:03.277 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - PooledDataSource forcefully closed/removed all connections.
+17:25:03.278 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - PooledDataSource forcefully closed/removed all connections.
+17:25:03.279 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - PooledDataSource forcefully closed/removed all connections.
+17:25:03.523 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - Opening JDBC Connection
+17:25:04.022 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - Created connection 871160466.
+17:25:04.024 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@33ecda92]
+17:25:04.029 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - ==>  Preparing: select * from student where id =? 
+17:25:04.172 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - ==> Parameters: 5(Integer)
+17:25:04.233 TRACE org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 59 trace - <==    Columns: id, name, qq, type, start_time, school, student_id, link, wish, bro
+17:25:04.234 TRACE org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 59 trace - <==        Row: 5, 陈思捷, 1224105946, 前端工程师, 2019年3月30日, 湖北工业大学工程技术学院, 7759, http://www.jnshu.com/school/33565/daily, 不能学好，就枣不到铝朋友。, 桂梦师姐
+17:25:04.242 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - <==      Total: 1
+17:25:04.244 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@33ecda92]
+17:25:04.256 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@33ecda92]
+17:25:04.258 DEBUG org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl 54 debug - Returned connection 871160466 to pool.
