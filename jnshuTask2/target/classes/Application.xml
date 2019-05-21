@@ -7,6 +7,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
+    <context:annotation-config/>
 
 <!--    开启主键自动扫描，扫描路径由base-package属性指定，表示Spring将会扫描该目录以及子目录下所有被@Repository、@Service、
 和@Controller和@Component四个注解修饰的类，对他们进行装配-->

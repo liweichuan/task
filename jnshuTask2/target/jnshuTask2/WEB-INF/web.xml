@@ -54,7 +54,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
                                  -->
   <init-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/springmvc-servlet.xml</param-value>
+    <param-value>classpath:springmvc-servlet.xml</param-value>
   </init-param>
   <!--指定当WEB应用启动时，装载servlet的次序-->
   <load-on-startup>1</load-on-startup>

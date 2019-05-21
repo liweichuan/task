@@ -34,9 +34,9 @@
         <result property="update_time" column="update_time" javaType="java.util.Date"></result>
     </resultMap>
 
-<!--    根据id查询-->
-    <select id="findStudentById" parameterType="long" resultMap="StudentResultMap">
-        select * from student where student_id=#{student_id}
+<!--    根据name查询-->
+    <select id="findStudentByName" parameterType="string" resultMap="StudentResultMap">
+        select * from student where name=#{name}
     </select>
 
 <!--    查询所有的数据-->

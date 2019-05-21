@@ -48,7 +48,7 @@
             <td>${student.way}</td>
             <td>${student.create_time}</td>
             <td>${student.update_time}</td>
-            <td><a href="${pageContext.request.contextPath}/toUpdateStudent/${student.student_id}">编辑</a></td>
+            <td><a href="${pageContext.request.contextPath}/toUpdateStudent/${student.name}">编辑</a></td>
             <td><form action="${pageContext.request.contextPath}/deleteStudent/${student.name}" method="post">
                 <input type="hidden" name="_method" value="DELETE">
                 <input TYPE="submit" value="删除"></form>

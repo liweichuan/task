@@ -35,8 +35,8 @@ public class StudentServiceImpl implements StudentService {
     }
 //实现查询方法
     @Override
-    public Student findStudentById(long student_id) {
-        return studentMapper.findStudentById(student_id);
+    public Student findStudentByName(String name) {
+        return studentMapper.findStudentByName(name);
     }
 //实现查询所有
     @Override

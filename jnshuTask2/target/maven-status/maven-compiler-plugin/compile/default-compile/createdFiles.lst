@@ -1,5 +1,6 @@
-com\taskDemo\service\StudentService.class
+com\taskDemo\Controller\JsonTest.class
 com\taskDemo\service\StudentServiceImpl.class
 com\taskDemo\Dao\studentMapper.class
 com\taskDemo\pojo\Student.class
+com\taskDemo\service\StudentService.class
 com\taskDemo\Controller\StudentController.class

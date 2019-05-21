@@ -22,8 +22,8 @@ public class junitTest {
     StudentService studentService;
 
     @Test
-    public void testfindById(){
-        Student student = studentService.findStudentById(7200);
+    public void testfindByName(){
+        Student student = studentService.findStudentByName("李伟川");
         System.out.println(student);
     }
 }

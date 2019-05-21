@@ -20,8 +20,8 @@
 <h2><a href="${pageContext.request.contextPath}/toAddStudent">添加用户</a> </h2>
 <%--${pageContext.request.contextPath}是绝对路径--%>
 <form action="${pageContext.request.contextPath }/findStudent" method="GET">
-    <label for="student_id">id：</label>
-    <input id="student_id" name="student_id">
+    <label for="name">姓名：</label>
+    <input id="name" name="name" >
     <input type="submit" value="查询"/>
 </form>
 <table width="100%" border="1">
@@ -54,7 +54,7 @@
             <td>${student.way}</td>
             <td>${student.create_time}</td>
             <td>${student.update_time}</td>
-            <td><a href="${pageContext.request.contextPath}/toUpdateStudent/${student.student_id}">编辑</a></td>
+            <td><a href="${pageContext.request.contextPath}/toUpdateStudent/${student.name}">编辑</a></td>
             <td><form action="${pageContext.request.contextPath}/deleteStudent/${student.name}" method="post">
                 <input type="hidden" name="_method" value="DELETE">
                 <input TYPE="submit" value="删除"></form>

@@ -11,8 +11,8 @@ public interface studentMapper {
     Boolean deleteStudent(String name);
     //更新学生数据
     Boolean updateStudent(Student student);
-    //根据id查询学生数据
-    Student findStudentById(long student_id);
+    //根据name查询学生数据
+    Student findStudentByName(String name);
     //查询所有学生数据
     List<Student> findAllStudent();
 }

@@ -13,10 +13,14 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.naming.Name;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
@@ -35,7 +39,6 @@ public class StudentController {
      * 该方法返回一个包含视图路径或视图路径和模型的ModelAndView对象。
      * */
     @Autowired
-    //取当前时间
 
     StudentService studentService;
     private static final Log logger= LogFactory.getLog(StudentController.class);
@@ -49,7 +52,7 @@ public class StudentController {
     /**添加学生
      * */
     @RequestMapping(value = "addStudent",method = RequestMethod.POST)
-    public String addStudent(Model model, Student student){
+    public String addStudent(Model model,Student student){
         logger.info(student);
         if (student!=null) {
             studentService.insertStudent(student);
@@ -59,9 +62,9 @@ public class StudentController {
     }
     /**更新学生数据
      * */
-    @RequestMapping(value = "toUpdateStudent/{student_id}",method = RequestMethod.GET)
-    public String toUpdateStudent(Model model,@PathVariable long student_id){
-        model.addAttribute("student",studentService.findStudentById(student_id));
+    @RequestMapping(value = "toUpdateStudent/{name}",method = RequestMethod.GET)
+    public String toUpdateStudent(Model model,@PathVariable String name){
+        model.addAttribute("student",studentService.findStudentByName(name));
         return "editStudent";
     }
     /**
@@ -70,7 +73,7 @@ public class StudentController {
     @RequestMapping(value = "updateStudent",method = RequestMethod.POST)
     public String updateStudent(Model model,Student student){
         if (studentService.updateStudent(student)){
-            student=studentService.findStudentById(student.getStudent_id());
+            student=studentService.findStudentByName(student.getName());
             model.addAttribute("student",student);
             return "redirect:/findAllStudent";
         }else {
@@ -81,7 +84,7 @@ public class StudentController {
     /**删除学生
      * */
     @RequestMapping(value = "deleteStudent/{name}",method = RequestMethod.DELETE)
-    public String deleteStudent(@PathVariable String name,Model model){
+    public String deleteStudent( @PathVariable String name,Model model)throws Exception{
         model.addAttribute("student",studentService.deleteStudent(name));
         return "redirect:/findAllStudent";
     }
@@ -89,9 +92,17 @@ public class StudentController {
     /**查询单个学生
      * */
     @RequestMapping(value = "findStudent",method = RequestMethod.GET)
-    public String findStudent(long student_id,Model model){
-        List<Student> student= Collections.singletonList(studentService.findStudentById(student_id));
-        model.addAttribute("student",student);
+    public String findStudent(Model model,String name,@Validated Student student,BindingResult result){
+        if (name==null || result.hasErrors()){
+            List<ObjectError>allErrors=result.getAllErrors();
+            for (ObjectError objectError:allErrors){
+            System.out.println(objectError.getDefaultMessage());
+            }
+          model.addAttribute("errors",allErrors);
+          return "error";
+        }
+        List<Student> students= Collections.singletonList(studentService.findStudentByName(name));
+        model.addAttribute("student",students);
         return "findStudent";
     }
     /**查询学生所有数据

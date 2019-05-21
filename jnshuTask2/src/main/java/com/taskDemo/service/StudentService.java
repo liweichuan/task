@@ -11,7 +11,7 @@ public interface StudentService {
 
     Boolean updateStudent(Student student);
 
-    Student findStudentById(long student_id);
+    Student findStudentByName(String name);
 
     List<Student> findAllStudent();
 }
