@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnshu.mapper.ArtMapper">
+  <resultMap id="BaseResultMap" type="com.jnshu.model.Art">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="main_menu_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="second_menu_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="update_time" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="editor" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="introduction" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="thumbnail" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="video_link" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="art_picture" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="text" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, main_menu_title, second_menu_title, status, create_time, update_time, 
+    editor, introduction, thumbnail, video_link, art_picture, text
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from art_details
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from art_details
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jnshu.model.Art">
+    insert into art_details (id, title, main_menu_title, 
+      second_menu_title, status, create_time, 
+      update_time, editor, introduction, 
+      thumbnail, video_link, art_picture, 
+      text)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{main_menu_title,jdbcType=VARCHAR}, 
+      #{second_menu_title,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{create_time,jdbcType=BIGINT}, 
+      #{update_time,jdbcType=BIGINT}, #{editor,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{thumbnail,jdbcType=VARCHAR}, #{video_link,jdbcType=VARCHAR}, #{art_picture,jdbcType=VARCHAR}, 
+      #{text,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jnshu.model.Art">
+    insert into art_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="main_menu_title != null">
+        main_menu_title,
+      </if>
+      <if test="second_menu_title != null">
+        second_menu_title,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="editor != null">
+        editor,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="thumbnail != null">
+        thumbnail,
+      </if>
+      <if test="video_link != null">
+        video_link,
+      </if>
+      <if test="art_picture != null">
+        art_picture,
+      </if>
+      <if test="text != null">
+        text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="main_menu_title != null">
+        #{main_menu_title,jdbcType=VARCHAR},
+      </if>
+      <if test="second_menu_title != null">
+        #{second_menu_title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=BIGINT},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=BIGINT},
+      </if>
+      <if test="editor != null">
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null">
+        #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="video_link != null">
+        #{video_link,jdbcType=VARCHAR},
+      </if>
+      <if test="art_picture != null">
+        #{art_picture,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null">
+        #{text,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jnshu.model.Art">
+    update art_details
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="main_menu_title != null">
+        main_menu_title = #{main_menu_title,jdbcType=VARCHAR},
+      </if>
+      <if test="second_menu_title != null">
+        second_menu_title = #{second_menu_title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=BIGINT},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=BIGINT},
+      </if>
+      <if test="editor != null">
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null">
+        thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="video_link != null">
+        video_link = #{video_link,jdbcType=VARCHAR},
+      </if>
+      <if test="art_picture != null">
+        art_picture = #{art_picture,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null">
+        text = #{text,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jnshu.model.Art">
+    update art_details
+    set title = #{title,jdbcType=VARCHAR},
+      main_menu_title = #{main_menu_title,jdbcType=VARCHAR},
+      second_menu_title = #{second_menu_title,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=BIGINT},
+      update_time = #{update_time,jdbcType=BIGINT},
+      editor = #{editor,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      video_link = #{video_link,jdbcType=VARCHAR},
+      art_picture = #{art_picture,jdbcType=VARCHAR},
+      text = #{text,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

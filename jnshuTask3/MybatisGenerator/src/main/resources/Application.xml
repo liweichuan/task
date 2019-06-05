@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--    导入数据文件-->
+    <context:property-placeholder location="classpath:db.properties" />
+<!--    导入日志文件-->
+    <context:property-placeholder location="classpath:log4j.properties" />
+<!--    开启注解-->
+    <context:annotation-config/>
+<!--    开启扫描-->
+    <context:component-scan base-package="com.jnshu.service"/>
+    <context:component-scan base-package="com.jnshu.ServiceImpl"/>
+
+
+<!--    数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!-- 最大并发连接数 -->
+        <property name = "maxActive" value = "20" />
+        <!-- 初始化连接数量 -->
+        <property name = "initialSize" value = "1" />
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name = "maxWait" value="60000"/>
+        <!-- 最小空闲连接数 -->
+        <property name = "minIdle" value = "10" />
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name = "timeBetweenEvictionRunsMillis" value ="15" />
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name = "minEvictableIdleTimeMillis" value ="60000" />
+    </bean>
+
+<!--创建sqlSessionFactory工厂-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!--        为mybatis注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+<!--        指向mybatis全局配置文件的位置-->
+        <property name="configLocation" value="classpath:Mybatis-config.xml"/>
+<!--        指向mapper映射文件的位置-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+
+    <!-- Mapper 扫描器配置mybatis的代理接口开发 * 接口类名和映射文件必须同名 * 接口类和映射文件必须在同一个目录下
+    * 接口的映射文件的namespace名称必须是接口的全限定名
+       * 接口的方法名必须和映射的statement的id一致 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+<!--        扫描dao层-->
+        <property name="basePackage" value="com.jnshu.mapper"/>
+<!--        配置sqlSessionFactory工厂-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+</beans>
