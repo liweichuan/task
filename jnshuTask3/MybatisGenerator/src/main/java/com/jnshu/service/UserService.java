@@ -2,16 +2,20 @@ package com.jnshu.service;
 
 import com.jnshu.model.User;
 
+import java.util.List;
+
 public interface UserService {
-    int deleteByPrimaryKey(Long id);
+    boolean deleteByName(String name);
 
-    int insert(User record);
+    boolean insert(User record);
 
-    int insertSelective(User record);
+    boolean insertSelective(User record);
 
-    User selectByPrimaryKey(Long id);
+    User selectByName(String name);
 
-    int updateByPrimaryKeySelective(User record);
+    List<User> selectByCondition();
 
-    int updateByPrimaryKey(User record);
+    boolean updateByPrimaryKeySelective(User record);
+
+    int updatePassword(User record);
 }

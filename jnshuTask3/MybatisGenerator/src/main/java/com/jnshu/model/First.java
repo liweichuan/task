@@ -73,4 +73,16 @@ public class First {
     public void setEditor(String editor) {
         this.editor = editor == null ? null : editor.trim();
     }
+
+    @Override
+    public String toString() {
+        return "First{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", status=" + status +
+                ", create_time=" + create_time +
+                ", update_time=" + update_time +
+                ", editor='" + editor + '\'' +
+                '}';
+    }
 }

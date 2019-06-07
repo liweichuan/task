@@ -3,17 +3,21 @@ package com.jnshu.mapper;
 import com.jnshu.model.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
-    int deleteByPrimaryKey(Long id);
+    boolean deleteByName(String name);
 
-    int insert(User record);
+    boolean insert(User record);
 
-    int insertSelective(User record);
+    boolean insertSelective(User record);
 
-    User selectByPrimaryKey(Long id);
+    User selectByName(String name);
 
-    int updateByPrimaryKeySelective(User record);
+    List<User> selectByCondition();
 
-    int updateByPrimaryKey(User record);
+    boolean updateByPrimaryKeySelective(User record);
+
+    int updatePassword(User record);
 }

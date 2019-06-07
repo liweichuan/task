@@ -3,17 +3,21 @@ package com.jnshu.mapper;
 import com.jnshu.model.Art;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface ArtMapper {
-    int deleteByPrimaryKey(Long id);
+    boolean deleteByPrimaryKey(Long id);
 
-    int insert(Art record);
+    boolean insert(Art record);
 
-    int insertSelective(Art record);
+    boolean insertSelective(Art record);
 
     Art selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Art record);
+    List<Art> selectByCondition();
 
-    int updateByPrimaryKey(Art record);
+    boolean updateByPrimaryKeySelective(Art record);
+
+    int updateStatus(Art record);
 }

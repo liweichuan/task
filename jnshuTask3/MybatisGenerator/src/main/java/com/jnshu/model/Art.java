@@ -150,4 +150,23 @@ public class Art {
     public void setText(String text) {
         this.text = text == null ? null : text.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Art{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", main_menu_title='" + main_menu_title + '\'' +
+                ", second_menu_title='" + second_menu_title + '\'' +
+                ", status=" + status +
+                ", create_time=" + create_time +
+                ", update_time=" + update_time +
+                ", editor='" + editor + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
+                ", video_link='" + video_link + '\'' +
+                ", art_picture='" + art_picture + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

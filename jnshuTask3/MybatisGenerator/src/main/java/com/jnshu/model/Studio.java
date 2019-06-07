@@ -95,4 +95,18 @@ public class Studio {
     public void setText(String text) {
         this.text = text == null ? null : text.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Studio{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", status=" + status +
+                ", create_time=" + create_time +
+                ", update_time=" + update_time +
+                ", editor='" + editor + '\'' +
+                ", picture='" + picture + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

@@ -84,4 +84,17 @@ public class Second {
     public void setEditor(String editor) {
         this.editor = editor == null ? null : editor.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Second{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", main_menu_title='" + main_menu_title + '\'' +
+                ", status=" + status +
+                ", create_time=" + create_time +
+                ", update_time=" + update_time +
+                ", editor='" + editor + '\'' +
+                '}';
+    }
 }

@@ -73,4 +73,16 @@ public class User {
     public void setCreator(String creator) {
         this.creator = creator == null ? null : creator.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", user='" + user + '\'' +
+                ", password='" + password + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", create_time=" + create_time +
+                ", creator='" + creator + '\'' +
+                '}';
+    }
 }

@@ -3,17 +3,21 @@ package com.jnshu.mapper;
 import com.jnshu.model.Studio;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface StudioMapper {
-    int deleteByPrimaryKey(Long id);
+    boolean deleteByPrimaryKey(Long id);
 
-    int insert(Studio record);
+    boolean insert(Studio record);
 
-    int insertSelective(Studio record);
+    boolean insertSelective(Studio record);
 
     Studio selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Studio record);
+    List<Studio> selectByCondition();
 
-    int updateByPrimaryKey(Studio record);
+    boolean updateByPrimaryKeySelective(Studio record);
+
+    int updateStatus(Studio record);
 }

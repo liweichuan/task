@@ -28,10 +28,12 @@
     from art_details
     where id = #{id,jdbcType=BIGINT}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from art_details
     where id = #{id,jdbcType=BIGINT}
   </delete>
+
   <insert id="insert" parameterType="com.jnshu.model.Art">
     insert into art_details (id, title, main_menu_title, 
       second_menu_title, status, create_time, 
@@ -44,6 +46,8 @@
       #{thumbnail,jdbcType=VARCHAR}, #{video_link,jdbcType=VARCHAR}, #{art_picture,jdbcType=VARCHAR}, 
       #{text,jdbcType=VARCHAR})
   </insert>
+
+
   <insert id="insertSelective" parameterType="com.jnshu.model.Art">
     insert into art_details
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -129,6 +133,8 @@
       </if>
     </trim>
   </insert>
+
+
   <update id="updateByPrimaryKeySelective" parameterType="com.jnshu.model.Art">
     update art_details
     <set>
@@ -171,20 +177,11 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnshu.model.Art">
+
+  <update id="updateStatus" parameterType="com.jnshu.model.Art">
     update art_details
-    set title = #{title,jdbcType=VARCHAR},
-      main_menu_title = #{main_menu_title,jdbcType=VARCHAR},
-      second_menu_title = #{second_menu_title,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      create_time = #{create_time,jdbcType=BIGINT},
-      update_time = #{update_time,jdbcType=BIGINT},
-      editor = #{editor,jdbcType=VARCHAR},
-      introduction = #{introduction,jdbcType=VARCHAR},
-      thumbnail = #{thumbnail,jdbcType=VARCHAR},
-      video_link = #{video_link,jdbcType=VARCHAR},
-      art_picture = #{art_picture,jdbcType=VARCHAR},
-      text = #{text,jdbcType=VARCHAR}
+    set
+    status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

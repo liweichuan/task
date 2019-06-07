@@ -13,19 +13,23 @@
       <arg column="text" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
+
   <sql id="Base_Column_List">
     id, title, status, create_time, update_time, editor, picture, text
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from studio
     where id = #{id,jdbcType=BIGINT}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from studio
     where id = #{id,jdbcType=BIGINT}
   </delete>
+
   <insert id="insert" parameterType="com.jnshu.model.Studio">
     insert into studio (id, title, status, 
       create_time, update_time, editor, 
@@ -34,6 +38,8 @@
       #{create_time,jdbcType=BIGINT}, #{update_time,jdbcType=BIGINT}, #{editor,jdbcType=VARCHAR}, 
       #{picture,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR})
   </insert>
+
+
   <insert id="insertSelective" parameterType="com.jnshu.model.Studio">
     insert into studio
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -89,6 +95,8 @@
       </if>
     </trim>
   </insert>
+
+
   <update id="updateByPrimaryKeySelective" parameterType="com.jnshu.model.Studio">
     update studio
     <set>
@@ -116,15 +124,12 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnshu.model.Studio">
+
+
+  <update id="updateStatus" parameterType="com.jnshu.model.Studio">
     update studio
-    set title = #{title,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      create_time = #{create_time,jdbcType=BIGINT},
-      update_time = #{update_time,jdbcType=BIGINT},
-      editor = #{editor,jdbcType=VARCHAR},
-      picture = #{picture,jdbcType=VARCHAR},
-      text = #{text,jdbcType=VARCHAR}
+    set
+    status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

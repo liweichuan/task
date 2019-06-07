@@ -12,19 +12,23 @@
       <arg column="editor" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
+
   <sql id="Base_Column_List">
     id, title, main_menu_title, status, create_time, update_time, editor
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from second_menu
     where id = #{id,jdbcType=BIGINT}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from second_menu
     where id = #{id,jdbcType=BIGINT}
   </delete>
+
   <insert id="insert" parameterType="com.jnshu.model.Second">
     insert into second_menu (id, title, main_menu_title, 
       status, create_time, update_time, 
@@ -33,6 +37,7 @@
       #{status,jdbcType=INTEGER}, #{create_time,jdbcType=BIGINT}, #{update_time,jdbcType=BIGINT}, 
       #{editor,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.jnshu.model.Second">
     insert into second_menu
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -82,6 +87,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.jnshu.model.Second">
     update second_menu
     <set>
@@ -106,14 +112,11 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnshu.model.Second">
+
+  <update id="updateStatus" parameterType="com.jnshu.model.Second">
     update second_menu
-    set title = #{title,jdbcType=VARCHAR},
-      main_menu_title = #{main_menu_title,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      create_time = #{create_time,jdbcType=BIGINT},
-      update_time = #{update_time,jdbcType=BIGINT},
-      editor = #{editor,jdbcType=VARCHAR}
+    set
+    status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

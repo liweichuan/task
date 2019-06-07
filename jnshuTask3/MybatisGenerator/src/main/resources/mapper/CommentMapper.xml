@@ -15,6 +15,7 @@
       <arg column="text" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
+
   <sql id="Base_Column_List">
     id, title, type, reply_id, nickname, status, create_time, update_time, editor, text
   </sql>
@@ -24,10 +25,12 @@
     from comment
     where id = #{id,jdbcType=BIGINT}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from comment
     where id = #{id,jdbcType=BIGINT}
   </delete>
+
   <insert id="insert" parameterType="com.jnshu.model.Comment">
     insert into comment (id, title, type, 
       reply_id, nickname, status, 
@@ -38,6 +41,7 @@
       #{create_time,jdbcType=BIGINT}, #{update_time,jdbcType=BIGINT}, #{editor,jdbcType=VARCHAR}, 
       #{text,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.jnshu.model.Comment">
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -105,6 +109,8 @@
       </if>
     </trim>
   </insert>
+
+
   <update id="updateByPrimaryKeySelective" parameterType="com.jnshu.model.Comment">
     update comment
     <set>
@@ -138,17 +144,12 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnshu.model.Comment">
+
+  <update id="updateStatus" parameterType="com.jnshu.model.Comment">
     update comment
-    set title = #{title,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER},
-      reply_id = #{reply_id,jdbcType=BIGINT},
-      nickname = #{nickname,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      create_time = #{create_time,jdbcType=BIGINT},
-      update_time = #{update_time,jdbcType=BIGINT},
-      editor = #{editor,jdbcType=VARCHAR},
-      text = #{text,jdbcType=VARCHAR}
+    set
+    status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
 </mapper>

@@ -117,4 +117,20 @@ public class Comment {
     public void setText(String text) {
         this.text = text == null ? null : text.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", type=" + type +
+                ", reply_id=" + reply_id +
+                ", nickname='" + nickname + '\'' +
+                ", status=" + status +
+                ", create_time=" + create_time +
+                ", update_time=" + update_time +
+                ", editor='" + editor + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

@@ -6,22 +6,25 @@ import com.jnshu.service.FirstService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FirstServiceImpl implements FirstService {
     @Autowired
     private FirstMapper firstMapper;
+
     @Override
-    public int deleteByPrimaryKey(Long id) {
+    public boolean deleteByPrimaryKey(Long id) {
         return firstMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public int insert(First record) {
+    public boolean insert(First record) {
         return firstMapper.insert(record);
     }
 
     @Override
-    public int insertSelective(First record) {
+    public boolean insertSelective(First record) {
         return firstMapper.insertSelective(record);
     }
 
@@ -31,12 +34,17 @@ public class FirstServiceImpl implements FirstService {
     }
 
     @Override
-    public int updateByPrimaryKeySelective(First record) {
+    public List<First> selectByCondition() {
+        return firstMapper.selectByCondition();
+    }
+
+    @Override
+    public boolean updateByPrimaryKeySelective(First record) {
         return firstMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public int updateByPrimaryKey(First record) {
-        return firstMapper.updateByPrimaryKey(record);
+    public int updateStatus(First record) {
+        return firstMapper.updateStatus(record);
     }
 }

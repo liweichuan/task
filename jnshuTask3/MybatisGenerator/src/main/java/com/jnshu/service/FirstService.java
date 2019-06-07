@@ -2,16 +2,20 @@ package com.jnshu.service;
 
 import com.jnshu.model.First;
 
+import java.util.List;
+
 public interface FirstService {
-    int deleteByPrimaryKey(Long id);
+    boolean deleteByPrimaryKey(Long id);
 
-    int insert(First record);
+    boolean insert(First record);
 
-    int insertSelective(First record);
+    boolean insertSelective(First record);
 
     First selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(First record);
+    List<First> selectByCondition();
 
-    int updateByPrimaryKey(First record);
+    boolean updateByPrimaryKeySelective(First record);
+
+    int updateStatus(First record);
 }

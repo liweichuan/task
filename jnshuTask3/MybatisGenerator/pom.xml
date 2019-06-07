@@ -53,6 +53,17 @@
       <artifactId>spring-aop</artifactId>
       <version>4.3.17.RELEASE</version>
     </dependency>
+<!--      aop两个注解包-->
+      <dependency>
+          <groupId>org.aspectj</groupId>
+          <artifactId>aspectjrt</artifactId>
+          <version>1.6.12</version>
+      </dependency>
+      <dependency>
+          <groupId>org.aspectj</groupId>
+          <artifactId>aspectjweaver</artifactId>
+          <version>1.6.12</version>
+      </dependency>
 <!--    spring-beans-->
     <dependency>
       <groupId>org.springframework</groupId>

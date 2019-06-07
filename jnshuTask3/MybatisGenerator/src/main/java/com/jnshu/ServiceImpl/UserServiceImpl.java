@@ -6,37 +6,45 @@ import com.jnshu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+
     @Override
-    public int deleteByPrimaryKey(Long id) {
-        return userMapper.deleteByPrimaryKey(id);
+    public boolean deleteByName(String name) {
+        return userMapper.deleteByName(name);
     }
 
     @Override
-    public int insert(User record) {
+    public boolean insert(User record) {
         return userMapper.insert(record);
     }
 
     @Override
-    public int insertSelective(User record) {
+    public boolean insertSelective(User record) {
         return userMapper.insertSelective(record);
     }
 
     @Override
-    public User selectByPrimaryKey(Long id) {
-        return userMapper.selectByPrimaryKey(id);
+    public User selectByName(String name) {
+        return userMapper.selectByName(name);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(User record) {
+    public List<User> selectByCondition() {
+        return userMapper.selectByCondition();
+    }
+
+    @Override
+    public boolean updateByPrimaryKeySelective(User record) {
         return userMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public int updateByPrimaryKey(User record) {
-        return userMapper.updateByPrimaryKey(record);
+    public int updatePassword(User record) {
+        return userMapper.updatePassword(record);
     }
 }

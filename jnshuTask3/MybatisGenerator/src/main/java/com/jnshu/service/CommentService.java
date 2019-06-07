@@ -2,16 +2,20 @@ package com.jnshu.service;
 
 import com.jnshu.model.Comment;
 
+import java.util.List;
+
 public interface CommentService {
-    int deleteByPrimaryKey(Long id);
+    boolean deleteByPrimaryKey(Long id);
 
-    int insert(Comment record);
+    boolean insert(Comment record);
 
-    int insertSelective(Comment record);
+    boolean insertSelective(Comment record);
 
     Comment selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Comment record);
+    List<Comment> selectByCondition();
 
-    int updateByPrimaryKey(Comment record);
+    boolean updateByPrimaryKeySelective(Comment record);
+
+    int updateStatus(Comment record);
 }

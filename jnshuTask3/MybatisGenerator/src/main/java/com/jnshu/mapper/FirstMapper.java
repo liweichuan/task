@@ -3,17 +3,21 @@ package com.jnshu.mapper;
 import com.jnshu.model.First;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface FirstMapper {
-    int deleteByPrimaryKey(Long id);
+    boolean deleteByPrimaryKey(Long id);
 
-    int insert(First record);
+    boolean insert(First record);
 
-    int insertSelective(First record);
+    boolean insertSelective(First record);
 
     First selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(First record);
+    List<First> selectByCondition();
 
-    int updateByPrimaryKey(First record);
+    boolean updateByPrimaryKeySelective(First record);
+
+    int updateStatus(First record);
 }

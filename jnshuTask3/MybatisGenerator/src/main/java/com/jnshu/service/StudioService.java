@@ -2,16 +2,20 @@ package com.jnshu.service;
 
 import com.jnshu.model.Studio;
 
+import java.util.List;
+
 public interface StudioService {
-    int deleteByPrimaryKey(Long id);
+    boolean deleteByPrimaryKey(Long id);
 
-    int insert(Studio record);
+    boolean insert(Studio record);
 
-    int insertSelective(Studio record);
+    boolean insertSelective(Studio record);
 
     Studio selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Studio record);
+    List<Studio> selectByCondition();
 
-    int updateByPrimaryKey(Studio record);
+    boolean updateByPrimaryKeySelective(Studio record);
+
+    int updateStatus(Studio record);
 }

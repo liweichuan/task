@@ -6,22 +6,25 @@ import com.jnshu.service.StudioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudioServiceImpl implements StudioService {
     @Autowired
     private StudioMapper studioMapper;
+
     @Override
-    public int deleteByPrimaryKey(Long id) {
+    public boolean deleteByPrimaryKey(Long id) {
         return studioMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public int insert(Studio record) {
+    public boolean insert(Studio record) {
         return studioMapper.insert(record);
     }
 
     @Override
-    public int insertSelective(Studio record) {
+    public boolean insertSelective(Studio record) {
         return studioMapper.insertSelective(record);
     }
 
@@ -31,12 +34,17 @@ public class StudioServiceImpl implements StudioService {
     }
 
     @Override
-    public int updateByPrimaryKeySelective(Studio record) {
+    public List<Studio> selectByCondition() {
+        return studioMapper.selectByCondition();
+    }
+
+    @Override
+    public boolean updateByPrimaryKeySelective(Studio record) {
         return studioMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public int updateByPrimaryKey(Studio record) {
-        return studioMapper.updateByPrimaryKey(record);
+    public int updateStatus(Studio record) {
+        return studioMapper.updateStatus(record);
     }
 }

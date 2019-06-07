@@ -7,22 +7,25 @@ import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SecondServiceImpl implements SecondService {
     @Autowired
     private SecondMapper secondMapper;
+
     @Override
-    public int deleteByPrimaryKey(Long id) {
+    public boolean deleteByPrimaryKey(Long id) {
         return secondMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public int insert(Second record) {
+    public boolean insert(Second record) {
         return secondMapper.insert(record);
     }
 
     @Override
-    public int insertSelective(Second record) {
+    public boolean insertSelective(Second record) {
         return secondMapper.insertSelective(record);
     }
 
@@ -32,12 +35,17 @@ public class SecondServiceImpl implements SecondService {
     }
 
     @Override
-    public int updateByPrimaryKeySelective(Second record) {
+    public List<Second> selectByCondition() {
+        return secondMapper.selectByCondition();
+    }
+
+    @Override
+    public boolean updateByPrimaryKeySelective(Second record) {
         return secondMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public int updateByPrimaryKey(Second record) {
-        return secondMapper.updateByPrimaryKey(record);
+    public int updateStatus(Second record) {
+        return secondMapper.updateStatus(record);
     }
 }
