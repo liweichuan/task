@@ -1,0 +1,18 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jnshu.Dao.StudentMapper">
+<!--    查询只是优秀学员的信息，只展示4位-->
+    <select id="show" resultType="com.jnshu.Entity.Student">
+        select * from student where excellent=1 limit 4
+    </select>
+<!--    查询已经找到工作的学员数量-->
+    <select id="countByWorking"  resultType="java.lang.Integer" >
+        select count(working) from student where working=1
+    </select>
+<!--    查询在学的学员数量-->
+    <select id="countByLearning" resultType="java.lang.Integer" >
+    select  count(working) from student where working=0
+    </select>
+</mapper>

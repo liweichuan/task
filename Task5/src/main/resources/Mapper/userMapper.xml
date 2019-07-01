@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jnshu.Dao.UserMapper">
+<!-- useGeneratedKey   （仅对 insert 和 update 有用）这会令 MyBatis 使用 JDBC 的
+ getGeneratedKeys 方法来取出由数据库内部生成的主键（比如：像 MySQL 和 SQL Server
+  这样的关系数据库管理系统的自动递增字段），默认值：false。搭配keyProperty使用-->
+    <insert id="addUser" parameterType="com.jnshu.Entity.User" useGeneratedKeys="true" keyProperty="id" >
+        insert into user(userName,passWord) values (#{userName},#{passWord})
+    </insert>
+
+    <select id="findUserByName" parameterType="java.lang.String" resultType="com.jnshu.Entity.User">
+        select * from user where userName=#{userName}
+    </select>
+
+    <select id="findUserById" parameterType="java.lang.Long" resultType="com.jnshu.Entity.User">
+        select * from user where id=#{id}
+    </select>
+</mapper>
