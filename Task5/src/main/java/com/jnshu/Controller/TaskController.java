@@ -1,6 +1,7 @@
 package com.jnshu.Controller;
 
 import com.jnshu.Entity.Profession;
+import com.jnshu.Entity.Result;
 import com.jnshu.Entity.Student;
 import com.jnshu.Entity.User;
 import com.jnshu.Service.ProfessionService;
@@ -15,12 +16,18 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -73,9 +80,10 @@ public class TaskController {
 
     //登录
     @RequestMapping(value="/login",method = RequestMethod.POST)
-    public String checkLogin(Model model, @Param("userName")String userName, @Param("passWord")String passWord,
+    public String checkLogin(Model model,@Param("userName")String userName, @Param("passWord")String passWord,
                              HttpServletRequest request, HttpServletResponse response){
-        User user =userService.checkLogin(userName,passWord);
+        Result result =userService.checkLogin(userName,passWord);
+        User user= (User) result.getData();
         if (user!=null){
             logger.info(userName,passWord);
             logger.info("登录成功");
@@ -94,21 +102,35 @@ public class TaskController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return "redirect:/u/profession";//验证通过，重定向到职业页面
+            return "loginSuccess";//验证通过
         }else {
             logger.debug("用户不存在，请重新登录");//这里就是登录验证不通过，
-            return "redirect:/login/0";  //验证不通过，又跳转到登录页面
+            model.addAttribute("result1",result);
+            return "message";  //验证不通过，又跳转到登录页面
         }
     }
     //注册
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String register(User user){
-        if (userService.register(user)!=0){
+    public String register(@ModelAttribute("user") User user,Model model){
+        Result result=new Result();
+        if (userService.register(user)==0) {
+           //返回0说明是用户名存在，或者用户名为空
+          result.setCode("401");
+          result.setMessage("用户名已存在,或用户名为空");
+          result.setData(null);
+            model.addAttribute("result1",result);
+            return "message";                  //为空
+        }if (userService.register(user)==1){
+            //返回值为1说明密码为空
+            result.setCode("402");
+            result.setMessage("注册失败，密码不能为空");
+            result.setData(null);
+            model.addAttribute("result1",result);
+            return "message";
+        }
+        else {
             logger.info("注册成功，返回登录界面");
             return "registerSuccess";
-        }else {
-            logger.debug("注册失败，用户名已存在");
-            return "redirect:/login/1";  //重定向到跳转注册而页面
         }
     }
     //注销,退出

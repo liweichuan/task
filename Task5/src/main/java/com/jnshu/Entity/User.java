@@ -1,6 +1,11 @@
 package com.jnshu.Entity;
 
+import org.springframework.stereotype.Component;
+
+
+@Component
 public class User {
+
     private long id;
 
     private String userName;

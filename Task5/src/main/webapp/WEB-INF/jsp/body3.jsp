@@ -6,7 +6,7 @@
             <header class="mb-5"><h1 style="color:red">登录</h1></header>
 
 
-            <form action="${pageContext.request.contextPath}/login" method="post" class="subscribe-form">
+            <form action="${pageContext.request.contextPath}/login" method="post" class="subscribe-form" >
                 <div class="row form-section">
 
                     <table border="0">

@@ -43,4 +43,16 @@
         <put-attribute name="tittle" value="注册成功"/>
         <put-attribute name="body" value="/WEB-INF/jsp/body5.jsp"/>
     </definition>
+
+    <!--    继承模板-->
+    <definition name="loginSuccess" extends="baseTemplate">
+        <put-attribute name="tittle" value="登录成功"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/body6.jsp"/>
+    </definition>
+
+    <!--    继承模板-->
+    <definition name="message" extends="baseTemplate">
+        <put-attribute name="tittle" value="提示"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/body7.jsp"/>
+    </definition>
 </tiles-definitions>

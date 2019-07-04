@@ -252,6 +252,30 @@
           <artifactId>java-jwt</artifactId>
           <version>3.3.0</version>
       </dependency>
+      <!--接口效验-->
+      <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+      <dependency>
+          <groupId>javax.validation</groupId>
+          <artifactId>validation-api</artifactId>
+          <version>1.1.0.Final</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-validator</artifactId>
+          <version>5.2.1.Final</version>
+      </dependency>
+      <dependency>
+          <groupId>json-taglib</groupId>
+          <artifactId>json-taglib</artifactId>
+          <version>0.4.1</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+      <dependency>
+          <groupId>org.aspectj</groupId>
+          <artifactId>aspectjweaver</artifactId>
+          <version>1.9.2</version>
+      </dependency>
   </dependencies>
 
   <build>

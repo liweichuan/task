@@ -32,7 +32,7 @@ public class LongDataTag extends TagSupport {
         }
         return super.doStartTag();
     }
-    public void setValue(String value) {
+    public void setValue(String value) {//EL表达式使用set和get赋值和取值
         this.value = value;
     }
 

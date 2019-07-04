@@ -21,7 +21,7 @@
             <name>value</name>
             <!--指定属性是必须的还是可选的-->
             <required>true</required>
-            <!--指定属性是否能接受请求时表达式的值，默认为false，表示不能接受请求时表达式的值。-->
+            <!--指定属性是否能接受请求时表达式的值,能不能使用EL，默认为false，表示不能接受请求时表达式的值。-->
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>

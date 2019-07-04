@@ -3,7 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
@@ -27,19 +26,10 @@
     <mvc:annotation-driven/>
 
 
-    <!--定义tiles视图解析器-->
-    <bean id="tilesViesResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
-    </bean>
 
 
-    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-        <property name="definitions">
-            <list>
-                <value>/WEB-INF/tiles.xml</value>
-            </list>
-        </property>
-    </bean>
+
+
 
 
     <!--配置静态资源访问
@@ -72,6 +62,20 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+
+
+    <!--定义tiles视图解析器-->
+    <bean id="tilesViesResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+    </bean>
+
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles.xml</value>
+            </list>
+        </property>
+    </bean>
     <!-- 配置视图解析器: 把 controller 方法返回值解析为实际的物理视图 -->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"-->
     <!--p:prefix="/WEB-INF/views/" p:suffix=".jsp">-->
